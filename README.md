@@ -55,7 +55,7 @@ Your application class must inherit from `MatrixOS::Application` and implement:
 ```cpp
 class YourApp : public MatrixOS::Application {
 public:
-    void Start() override;  // Called once when app starts
+    void Start(const vector<string>& args) override;  // Called once when app starts
     void Loop() override;   // Called repeatedly while app runs
     void End() override;    // Called once when app exits
 };

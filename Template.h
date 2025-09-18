@@ -17,7 +17,7 @@ class Template : public Application {
       .visibility = true,
   };
 
-  void Setup() override;
+  void Setup(const vector<string>& args) override;
   void Loop() override;
   void End() override;
 };
