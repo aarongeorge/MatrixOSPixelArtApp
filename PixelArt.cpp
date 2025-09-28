@@ -10,27 +10,27 @@ void PixelArt::Setup(const vector<string>& args) {
 // Run in a loop after Setup
 void PixelArt::Loop() {
 	struct KeyEvent keyEvent;
-	while (MatrixOS::KEYPAD::Get(&keyEvent)) {
+	while (MatrixOS::KeyPad::Get(&keyEvent)) {
 		KeyEventHandler(keyEvent.id, &keyEvent.info);
 	}
 }
 
-void PixelArtApp::ShowPicker() {
+void PixelArt::ShowPicker() {
 	for (size_t i = 0; i < NUM_PICKER_COLORS; i++) {
         MatrixOS::LED::SetColor(Point(i, 0), pickerColors[i], 0);
     }
 	pickerShowing = true;
 }
 
-void PixelArtApp::HidePicker() {
+void PixelArt::HidePicker() {
 	for (size_t i = 0; i < NUM_PICKER_COLORS; i++) {
         MatrixOS::LED::SetColor(Point(i, 0), color_grid[i + 1][0], 0);
     }
 	pickerShowing = false;
 }
 
-void PixelArtApp::KeyEventHandler(uint16_t keyID, KeyInfo* keyInfo) {
-	Point xy = MatrixOS::KEYPAD::ID2XY(keyID);
+void PixelArt::KeyEventHandler(uint16_t keyID, KeyInfo* keyInfo) {
+	Point xy = MatrixOS::KeyPad::ID2XY(keyID);
 
 	// Pad or Touch Strip
 	if (xy) {
